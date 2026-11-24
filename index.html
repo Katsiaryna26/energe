@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ec" />
+    <meta name="description" content="Игра-ходилка для двух игроков: путешествие к более бережному отношению к энергии." />
+    <title>Энергоход — путешествие к разумной энергии</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Энергоход — на главную">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span>бережно<span class="brand-dot">.</span></span>
+        </a>
+        <div class="top-note"><span class="live-dot"></span> Игра для двоих</div>
+        <button class="reset-link" id="restartTop" type="button">Начать заново <span aria-hidden="true">↺</span></button>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <div class="eyebrow"><span>♧</span> ИГРАЙ. ДУМАЙ. БЕРЕГИ.</div>
+            <h1 id="hero-title">Энерго<span>ход</span></h1>
+            <p class="hero-subtitle">Маленькие привычки — большое будущее.</p>
+            <p class="hero-description">Бросайте кубик, отвечайте на вопросы и помогите планете вместе.</p>
+          </div>
+          <div class="hero-illustration" aria-hidden="true">
+            <span class="sun"></span>
+            <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
+            <span class="planet">✳</span>
+            <span class="leaf leaf-one">❧</span><span class="leaf leaf-two">❧</span>
+            <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span>
+          </div>
+        </section>
+
+        <section class="game-layout" aria-label="Игровое поле и управление">
+          <div class="board-panel">
+            <div class="board-heading">
+              <div><div class="section-kicker">ВАШ МАРШРУТ</div><h2>Тропа энергии</h2></div>
+              <div class="tile-legend"><span class="legend-icon">✦</span> Вопрос на каждом шагу</div>
+            </div>
+            <div class="board-wrap">
+              <div class="board" id="board" role="img" aria-label="Игровая дорожка из 30 клеток"></div>
+              <div class="board-sun" aria-hidden="true">☼</div>
+            </div>
+            <div class="board-footer"><span><span class="mini-dot green"></span> Старт</span><span class="footer-path"></span><span>Финиш <span class="mini-dot gold"></span></span></div>
+          </div>
+
+          <aside class="side-panel" aria-label="Счёт и кубик">
+            <section class="turn-card" aria-live="polite">
+              <div class="turn-label"><span class="turn-pulse"></span><span id="turnLabel">ХОД ИГРОКА 1</span></div>
+              <div class="turn-player"><span class="player-avatar avatar-one" id="turnAvatar">☀</span><div><strong id="turnName">Игрок 1</strong><small id="turnHint">Ваша очередь — бросайте кубик</small></div></div>
+              <div class="turn-progress"><div id="progressFill"></div></div>
+              <div class="progress-caption"><span>ПУТЬ К ФИНИШУ</span><strong id="progressText">0 из 29 шагов</strong></div>
+            </section>
+
+            <section class="score-card">
+              <div class="score-heading"><h3>Игроки</h3><span class="score-caption">ВАШИ ФИШКИ НА ПОЛЕ</span></div>
+              <div class="player-row" id="playerRow1"><span class="player-avatar avatar-one">☀</span><span class="player-name">Игрок 1</span><span class="player-position" id="position1">Старт</span><span class="score-value" id="score1">0</span></div>
+              <div class="player-row" id="playerRow2"><span class="player-avatar avatar-two">☾</span><span class="player-name">Игрок 2</span><span class="player-position" id="position2">Старт</span><span class="score-value" id="score2">0</span></div>
+            </section>
+
+            <section class="dice-card">
+              <div class="dice-instruction"><span class="die-emoji" aria-hidden="true">🎲</span><div><h3 id="diceTitle">Твой ход!</h3><p id="diceDescription">Нажми на кубик и отправляйся в путь.</p></div></div>
+              <button class="dice-button" id="rollButton" type="button" aria-label="Бросить кубик">
+                <span class="die-face" id="dieFace" data-value="1" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                <span id="rollText">Бросить кубик</span><span class="button-arrow" aria-hidden="true">↗</span>
+              </button>
+              <p class="dice-footnote">После ответа кубик бросает соперник.</p>
+            </section>
+            <p class="rule-note"><span>✦</span><span><strong>Как играть</strong> — игроки бросают кубик по очереди. Верный ответ продвигает фишку, неверный оставляет её на месте. После ответа ход переходит сопернику.</span></p>
+          </aside>
+        </section>
+
+        <section class="tip-strip"><span class="tip-icon">♧</span><p><strong>Знаешь ли ты?</strong> Выключая свет, выходя из комнаты, ты экономишь энергию каждый день.</p><span class="tip-mark">МЕНЯЕМ ПРИВЫЧКИ К ЛУЧШЕМУ <span>↗</span></span></section>
+        <footer><span>бережно<span class="brand-dot">.</span></span><span>Каждый шаг имеет значение&nbsp; ✳</span></footer>
+      </main>
+    </div>
+
+    <dialog class="question-dialog" id="questionDialog" aria-labelledby="questionTitle">
+      <form method="dialog" class="dialog-form">
+        <button class="dialog-close" id="closeDialog" type="button" aria-label="Закрыть вопрос">×</button>
+        <div class="question-topline"><span class="question-icon" id="questionIcon">✦</span><span class="question-category" id="questionCategory">ЭНЕРГОПРИВЫЧКИ</span><span class="roll-result"><span class="die-face result-die" id="questionDie" data-value="1" role="img" aria-label="Выпало 1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="roll-result-copy"><span class="roll-caption">ВЫПАЛО</span><strong id="questionRoll">1</strong></span></span></div>
+        <div class="question-player"><span class="player-avatar avatar-one" id="questionAvatar">☀</span><span id="questionPlayer">Игрок 1</span> <span>•</span> твой вопрос <span class="question-step" id="questionStep">КЛЕТКА 1</span></div>
+        <h2 id="questionTitle">Вопрос</h2>
+        <div class="answer-list" id="answerList" role="group" aria-label="Варианты ответа"></div>
+        <div class="answer-feedback" id="answerFeedback" aria-live="polite"></div>
+        <button class="continue-button hidden" id="continueButton" type="button">Продолжить <span aria-hidden="true">→</span></button>
+      </form>
+    </dialog>
+
+    <dialog class="question-dialog result-dialog" id="resultDialog" aria-labelledby="resultTitle">
+      <div class="result-content"><div class="result-confetti" aria-hidden="true">✳ ✦ ✧</div><div class="result-badge">🏆</div><div class="eyebrow">ПУТЕШЕСТВИЕ ЗАВЕРШЕНО</div><h2 id="resultTitle">Победа!</h2><p id="resultText">Ты прошёл путь и стал другом энергии!</p><button class="continue-button" id="playAgainButton" type="button">Сыграть ещё раз <span aria-hidden="true">↺</span></button></div>
+    </dialog>
+    <div class="sr-only" id="announcement" aria-live="polite"></div>
+  </body>
+</html>
